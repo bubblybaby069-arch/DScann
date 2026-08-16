@@ -20,6 +20,102 @@
     >
 
     <link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== Updated 4-machine hero ===== */
+.hero { overflow: hidden; }
+.hero-grid { align-items: center; }
+.hero-visual {
+    position: relative;
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 14px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(239,248,255,.88));
+    border: 1px solid rgba(80,145,190,.16);
+    box-shadow: 0 28px 70px rgba(25, 91, 125, .16);
+    isolation: isolate;
+}
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    right: -70px; top: -70px;
+    border-radius: 50%;
+    background: rgba(72, 190, 210, .16);
+    filter: blur(4px);
+    z-index: -1;
+}
+.hero-visual::after {
+    content: '';
+    position: absolute;
+    width: 150px; height: 150px;
+    left: -65px; bottom: -65px;
+    border-radius: 50%;
+    background: rgba(72, 125, 220, .10);
+    z-index: -1;
+}
+.machine-card {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(30, 80, 110, .10);
+    box-shadow: 0 14px 35px rgba(22, 70, 100, .11);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+.machine-card:hover {
+    transform: translateY(-7px) scale(1.015);
+    box-shadow: 0 22px 45px rgba(22, 70, 100, .18);
+}
+.machine-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+    padding: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbfe 100%);
+}
+.machine-card .machine-label {
+    position: absolute;
+    left: 12px; bottom: 12px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(12, 48, 70, .82);
+    backdrop-filter: blur(8px);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.machine-card .machine-dot {
+    position: absolute;
+    top: 13px; right: 13px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #35c58a;
+    box-shadow: 0 0 0 5px rgba(53,197,138,.13);
+}
+.hero-visual .machine { position: static !important; }
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .hero-visual { margin-top: 18px; }
+}
+@media (max-width: 560px) {
+    .hero-visual { gap: 10px; padding: 9px; border-radius: 22px; }
+    .machine-card { border-radius: 16px; }
+    .machine-card img { padding: 7px; }
+    .machine-card .machine-label { left: 8px; bottom: 8px; padding: 5px 8px; font-size: 9px; }
+    .machine-card .machine-dot { top: 10px; right: 10px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -119,35 +215,31 @@
 
         </div>
 
+        <!-- MACHINE IMAGES — all four machines visible -->
+        <div class="hero-visual reveal" aria-label="D Scanning Center imaging equipment">
+            <div class="machine-card">
+                <span class="machine-dot" aria-hidden="true"></span>
+                <img src="images/mri.png" alt="MRI scanner" class="machine mri">
+                <span class="machine-label">MRI</span>
+            </div>
 
-        <!-- MACHINE IMAGES -->
+            <div class="machine-card">
+                <span class="machine-dot" aria-hidden="true"></span>
+                <img src="images/ct.png" alt="CT scanner" class="machine ct">
+                <span class="machine-label">CT Scan</span>
+            </div>
 
-        <div class="hero-visual reveal">
+            <div class="machine-card">
+                <span class="machine-dot" aria-hidden="true"></span>
+                <img src="images/xray.png" alt="Digital X-Ray machine" class="machine xray">
+                <span class="machine-label">X-Ray</span>
+            </div>
 
-            <img
-                class="machine mri"
-                src="images/mri.png"
-                alt="MRI scanner"
-            >
-
-            <img
-                class="machine ct"
-                src="images/ct.png"
-                alt="CT scanner"
-            >
-
-            <img
-                class="machine xray"
-                src="images/xray.png"
-                alt="Digital X-Ray machine"
-            >
-
-            <img
-                class="machine usg"
-                src="images/ultrasound.png"
-                alt="Ultrasound machine"
-            >
-
+            <div class="machine-card">
+                <span class="machine-dot" aria-hidden="true"></span>
+                <img src="images/ultrasound.png" alt="Ultrasound machine" class="machine usg">
+                <span class="machine-label">Ultrasound</span>
+            </div>
         </div>
 
     </div>
